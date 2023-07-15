@@ -10,7 +10,7 @@ import Cart from "../Cart/Cart";
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [searchModal, setSearchModal] = useState(false);
+    const [showcart, setShowCart] = useState(true);
 
     const handleScroll = () => {
         const offset = window.scrollY
@@ -37,14 +37,14 @@ const Header = () => {
             <div className="right">
                 <TbSearch/>
                 <AiOutlineHeart/>
-                <span>
+                <span className="cart-icon" onClick={()=>setShowCart(true)}>
                     <CgShoppingCart/>
                     <span>5</span>
                 </span>
             </div>
           </div>
-
         </header>
+        {showcart && <Cart setShowCart={setShowCart}/>}
         </>
     );
 };
