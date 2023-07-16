@@ -11,6 +11,7 @@ import Cart from "../Cart/Cart";
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [showcart, setShowCart] = useState(true);
+    const [showSearch, setshowSearch] = useState(true);
 
     const handleScroll = () => {
         const offset = window.scrollY
@@ -35,7 +36,7 @@ const Header = () => {
             </ul>
             <div className="center">E-Commerce.</div>
             <div className="right">
-                <TbSearch/>
+                <TbSearch onClick={() => setshowSearch(true)}/>
                 <AiOutlineHeart/>
                 <span className="cart-icon" onClick={()=>setShowCart(true)}>
                     <CgShoppingCart/>
@@ -45,6 +46,7 @@ const Header = () => {
           </div>
         </header>
         {showcart && <Cart setShowCart={setShowCart}/>}
+        {showSearch && <Search setshowSearch={setshowSearch}/>}
         </>
     );
 };
